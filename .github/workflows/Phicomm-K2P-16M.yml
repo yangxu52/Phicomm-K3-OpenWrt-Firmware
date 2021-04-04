@@ -14,7 +14,7 @@
 #limitations under the License.
 #
 
-name: K3 firmware compile
+name: K2P-16 firmware compile
 
 on:
   repository_dispatch:
