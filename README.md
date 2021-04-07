@@ -1,5 +1,5 @@
-# K3-OpenWrt-Firmware-Action
-Phicomm K3 OpenWrt firmware Compile by Github Actions
+# K2P/K3-OpenWrt-Firmware-Action 【⚝ Star Please ↗】
+Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 [![LICENSE](https://img.shields.io/badge/license-apache--2.0-green.svg?style=flat-square&label=LICENSE)](https://github.com/yangxu52/K3-OpenWrt-Firmware-Action/blob/main/LICENSE)
 ![GitHub Stars](https://img.shields.io/github/stars/yangxu52/K3-OpenWrt-Firmware-Action.svg?style=flat-square&label=Stars&logo=github)
