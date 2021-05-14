@@ -27,8 +27,8 @@ wget -nv https://raw.githubusercontent.com/garypang13/smartdns-le/main/Makefile 
 
 #添加garypang13的bypass插件
 git clone -b main https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
-sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' package/lean/luci-app-bypass/Makefile
-sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' package/lean/luci-app-bypass/Makefile
+#sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' package/lean/luci-app-bypass/Makefile
+#sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' package/lean/luci-app-bypass/Makefile
 ls -la package/lean/ |grep luci-app-bypass
 echo '====================Add luci-app-bypass OK!===================='
 
