@@ -17,9 +17,20 @@
 #
 
 #添加xiaorouji的passwall软件源
-sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-cat feeds.conf.default |grep passwall
-echo '====================Add lienol feed source OK!===================='
+#sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+#cat feeds.conf.default |grep passwall
+#echo '====================Add lienol feed source OK!===================='
+
+git clone -b main https://github.com/xiaorouji/openwrt-passwall.git ./pw
+mv pw/tcping/ package/lean/tcping
+mv pw/chinadns-ng/ package/lean/chinadns-ng
+mv pw/shadowsocksr-libev/ package/lean/shadowsocksr-libev
+mv pw/v2ray-plugin/ package/lean/v2ray-plugin
+mv pw/xray-core/ package/lean/xray-core
+mv pw/trojan-plus/ package/lean/trojan-plus
+mv pw/trojan-go/ package/lean/trojan-go
+mv pw/naiveproxy package/lean/naiveproxy
+rm -rf ./pw/
 
 #添加garypang13的bypass依赖插件
 wget -nv https://raw.githubusercontent.com/garypang13/openwrt-packages/master/lua-maxminddb/Makefile -P package/lean/lua-maxminddb
