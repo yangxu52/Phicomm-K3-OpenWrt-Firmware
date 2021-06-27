@@ -16,81 +16,62 @@
 #limitations under the License.
 #
 
-#添加xiaorouji的passwall软件源
-#sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-#cat feeds.conf.default |grep passwall
+echo '添加passwall和bypass软件源'
+sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
+cat feeds.conf.default
+echo '====================Add feed source OK!===================='
+
+#git clone -b main https://github.com/xiaorouji/openwrt-passwall.git ./pw
+#mv pw/tcping/ package/lean/tcping
+#mv pw/chinadns-ng/ package/lean/chinadns-ng
+#mv pw/shadowsocksr-libev/ package/lean/shadowsocksr-libev
+#mv pw/v2ray-plugin/ package/lean/v2ray-plugin
+#mv pw/xray-core/ package/lean/xray-core
+#mv pw/trojan-plus/ package/lean/trojan-plus
+#mv pw/trojan-go/ package/lean/trojan-go
+#mv pw/naiveproxy package/lean/naiveproxy
+#rm -rf ./pw/
 #echo '====================Add lienol feed source OK!===================='
 
-git clone -b main https://github.com/xiaorouji/openwrt-passwall.git ./pw
-mv pw/tcping/ package/lean/tcping
-mv pw/chinadns-ng/ package/lean/chinadns-ng
-mv pw/shadowsocksr-libev/ package/lean/shadowsocksr-libev
-mv pw/v2ray-plugin/ package/lean/v2ray-plugin
-mv pw/xray-core/ package/lean/xray-core
-mv pw/trojan-plus/ package/lean/trojan-plus
-mv pw/trojan-go/ package/lean/trojan-go
-mv pw/naiveproxy package/lean/naiveproxy
-rm -rf ./pw/
-
-#添加garypang13的bypass依赖插件
-wget -nv https://raw.githubusercontent.com/garypang13/openwrt-packages/master/lua-maxminddb/Makefile -P package/lean/lua-maxminddb
-wget -nv https://raw.githubusercontent.com/garypang13/smartdns-le/main/Makefile -P package/lean/smartdns-le
-
-#添加garypang13的bypass插件
-git clone -b main https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
-#sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' package/lean/luci-app-bypass/Makefile
-#sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' package/lean/luci-app-bypass/Makefile
-ls -la package/lean/ |grep luci-app-bypass
-echo '====================Add luci-app-bypass OK!===================='
-
-#添加garypang13的dnsfilter插件
+echo '添加garypang13的dnsfilter插件'
 git clone -b main https://github.com/garypang13/luci-app-dnsfilter package/lean/luci-app-dnsfilter
 ls -la package/lean/ |grep luci-app-dnsfilter
 echo '====================Add luci-app-dnsfilter OK!===================='
 
-#添加garypang13的edge主题
-git clone -b 18.06 https://github.com/garypang13/luci-theme-edge package/lean/luci-theme-edge
-ls -la package/lean/ |grep luci-theme-edge
-echo '====================Add luci-theme-edge OK!===================='
+echo '添加jerrykuku的argon-mod主题'
+rm -rf package/lean/luci-theme-argon  
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
 
-#修改linux内核为5.4分支
+echo '修改linux内核为5.4分支'
 sed -i 's/KERNEL_PATCHVER:=4.19/KERNEL_PATCHVER:=5.4/g' target/linux/bcm53xx/Makefile
 cat target/linux/bcm53xx/Makefile |grep KERNEL_PATCHVER
 echo '====================Alert Kernel Patchver to 5.4 OK!===================='
 
-#添加lwz322的K3屏幕插件
+echo '添加lwz322的K3屏幕插件'
+rm -rf package/lean/luci-app-k3screenctrl
 git clone https://github.com/lwz322/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
 ls -la package/lean/ |grep luci-app-k3screenctrl
 echo '====================Add k3screen Plug OK!===================='
 
-#替换lwz322的K3屏幕驱动
+echo '替换lwz322的K3屏幕驱动'
 rm -rf package/lean/k3screenctrl
 git clone https://github.com/lwz322/k3screenctrl_build.git package/lean/k3screenctrl/
 #sed -i 's/@TARGET_bcm53xx_DEVICE_phicomm-k3 +@KERNEL_DEVMEM //g' package/lean/k3screenctrl/Makefile
 cat package/lean/k3screenctrl/Makefile |grep DEPENDS
 echo '====================Add k3screen Drive OK!===================='
 
-#移除bcm53xx中的其他机型
-sed -i '141,385d' target/linux/bcm53xx/image/Makefile
-sed -i '150,179d' target/linux/bcm53xx/image/Makefile
+echo '移除bcm53xx中的其他机型'
+sed -i '421,453d' target/linux/bcm53xx/image/Makefile
+sed -i '140,412d' target/linux/bcm53xx/image/Makefile
 sed -i 's/k3screenctrl/luci-app-k3screenctrl/g' target/linux/bcm53xx/image/Makefile
 cat target/linux/bcm53xx/image/Makefile |grep DEVICE_PACKAGES
 echo '====================Remove other devices of bcm53xx!===================='
 
-#替换K3的无线驱动为ac86u
-#wget -nv https://github.com/Hill-98/phicommk3-firmware/raw/master/brcmfmac4366c-pcie.bin.ac88u
-#mv brcmfmac4366c-pcie.bin.ac88u package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
-#chmod 0644 package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
-#echo '====================Replace k3wireless firmware OK!===================='
-
-#替换K3的无线驱动为asus-dhd24
-wget -nv https://github.com/Hill-98/phicommk3-firmware/raw/master/brcmfmac4366c-pcie.bin.asus-dhd24
-mv brcmfmac4366c-pcie.bin.asus-dhd24 package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
-#chmod 0644 package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
+echo '替换K3的无线驱动为asus-dhd24'
+wget -nv https://github.com/Hill-98/phicommk3-firmware/raw/master/brcmfmac4366c-pcie.bin.asus-dhd24 -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
+#echo '替换K3的无线驱动为ac86u'
+#wget -nv https://github.com/Hill-98/phicommk3-firmware/raw/master/brcmfmac4366c-pcie.bin.ac88u -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
+#echo '替换K3的无线驱动为69027'
+#wget -nv https://github.com/Hill-98/phicommk3-firmware/raw/master/brcmfmac4366c-pcie.bin.69027 -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
 echo '====================Replace k3wireless firmware OK!===================='
-
-#替换K3的无线驱动为69027
-#wget -nv https://github.com/Hill-98/phicommk3-firmware/raw/master/brcmfmac4366c-pcie.bin.69027
-#mv brcmfmac4366c-pcie.bin.69027 package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
-#chmod 0644 package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
-#echo '====================Replace k3wireless firmware OK!===================='
