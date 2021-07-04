@@ -16,23 +16,12 @@
 #limitations under the License.
 #
 
-#添加xiaorouji的passwall软件源
+echo '添加passwall和bypass软件源'
 sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-cat feeds.conf.default |grep passwall
-echo '====================Add lienol feed source OK!===================='
+sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
+cat feeds.conf.default
+echo '====================Add feed source OK!===================='
 
-#添加garypang13的bypass依赖插件
-wget -nv https://raw.githubusercontent.com/garypang13/openwrt-packages/master/lua-maxminddb/Makefile -P package/lean/lua-maxminddb
-wget -nv https://raw.githubusercontent.com/garypang13/smartdns-le/main/Makefile -P package/lean/smartdns-le
-
-#添加garypang13的bypass插件
-git clone -b main https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
-#sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' package/lean/luci-app-bypass/Makefile
-#sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' package/lean/luci-app-bypass/Makefile
-ls -la package/lean/ |grep luci-app-bypass
-echo '====================Add luci-app-bypass OK!===================='
-
-#添加garypang13的dnsfilter插件
-git clone -b main https://github.com/garypang13/luci-app-dnsfilter package/lean/luci-app-dnsfilter
-ls -la package/lean/ |grep luci-app-dnsfilter
-echo '====================Add luci-app-dnsfilter OK!===================='
+echo '添加jerrykuku的argon-mod主题'
+rm -rf package/lean/luci-theme-argon  
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
