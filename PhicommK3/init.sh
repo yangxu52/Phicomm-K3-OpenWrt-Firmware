@@ -34,10 +34,10 @@ echo '====================Add feed source OK!===================='
 #rm -rf ./pw/
 #echo '====================Add lienol feed source OK!===================='
 
-echo '添加garypang13的dnsfilter插件'
-git clone -b main https://github.com/garypang13/luci-app-dnsfilter package/lean/luci-app-dnsfilter
-ls -la package/lean/ |grep luci-app-dnsfilter
-echo '====================Add luci-app-dnsfilter OK!===================='
+#echo '添加garypang13的dnsfilter插件'
+#git clone -b main https://github.com/garypang13/luci-app-dnsfilter package/lean/luci-app-dnsfilter
+#ls -la package/lean/ |grep luci-app-dnsfilter
+#echo '====================Add luci-app-dnsfilter OK!===================='
 
 echo '添加jerrykuku的argon-mod主题'
 rm -rf package/lean/luci-theme-argon  
