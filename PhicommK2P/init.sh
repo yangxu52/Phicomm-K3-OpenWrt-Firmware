@@ -18,6 +18,6 @@
 
 echo '添加passwall和bypass软件源'
 sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
+#sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
 cat feeds.conf.default
 echo '====================Add feed source OK!===================='
