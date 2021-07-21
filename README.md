@@ -5,7 +5,9 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 ![GitHub Stars](https://img.shields.io/github/stars/yangxu52/K3-OpenWrt-Firmware-Action.svg?style=flat-square&label=Stars&logo=github)
 ![GitHub Forks](https://img.shields.io/github/forks/yangxu52/K3-OpenWrt-Firmware-Action.svg?style=flat-square&label=Forks&logo=github)
 
+
 ## Instruction | 介绍
+
 
 ### Source Code | 源码使用
 
@@ -16,6 +18,9 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 ​	https://github.com/fw876/helloworld
 
 ​	https://github.com/jerrykuku/luci-theme-argon
+
+​	https://github.com/lwz322/k3screenctrl_build
+
 
 ### Including Applictions | 包含插件
 
@@ -42,10 +47,12 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 - Network Turbo ACC(base Qualcomm SFE)
 
 - Others
+- 
 
 ## Tanks | 致谢
 
 - [LEDE](https://github.com/coolsnowwolf)
-- [xiaorouji](https://github.com/xiaorouji)
-- [garypang13](https://github.com/garypang13)
+- [Lienol](https://github.com/xiaorouji)
+- [jerrykuku](https://github.com/jerrykuku)
+- [lwz322](https://github.com/lwz322)
 - [P3TERX](https://github.com/P3TERX)
