@@ -17,36 +17,13 @@
 #
 
 echo '添加passwall和bypass软件源'
-sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
+sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
 cat feeds.conf.default
 echo '====================Add feed source OK!===================='
-
-#git clone -b main https://github.com/xiaorouji/openwrt-passwall.git ./pw
-#mv pw/tcping/ package/lean/tcping
-#mv pw/chinadns-ng/ package/lean/chinadns-ng
-#mv pw/shadowsocksr-libev/ package/lean/shadowsocksr-libev
-#mv pw/v2ray-plugin/ package/lean/v2ray-plugin
-#mv pw/xray-core/ package/lean/xray-core
-#mv pw/trojan-plus/ package/lean/trojan-plus
-#mv pw/trojan-go/ package/lean/trojan-go
-#mv pw/naiveproxy package/lean/naiveproxy
-#rm -rf ./pw/
-#echo '====================Add lienol feed source OK!===================='
-
-#echo '添加garypang13的dnsfilter插件'
-#git clone -b main https://github.com/garypang13/luci-app-dnsfilter package/lean/luci-app-dnsfilter
-#ls -la package/lean/ |grep luci-app-dnsfilter
-#echo '====================Add luci-app-dnsfilter OK!===================='
 
 echo '添加jerrykuku的argon-mod主题'
 rm -rf package/lean/luci-theme-argon  
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
-
-echo '修改linux内核为5.4分支'
-sed -i 's/KERNEL_PATCHVER:=4.19/KERNEL_PATCHVER:=5.4/g' target/linux/bcm53xx/Makefile
-cat target/linux/bcm53xx/Makefile |grep KERNEL_PATCHVER
-echo '====================Alert Kernel Patchver to 5.4 OK!===================='
 
 echo '添加lwz322的K3屏幕插件'
 rm -rf package/lean/luci-app-k3screenctrl
