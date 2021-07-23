@@ -11,8 +11,6 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 ### Source Code | 源码使用
 
-​	OpenWRT Source | 源代码
-
 ​	https://github.com/coolsnowwolf/lede
 
 ​	https://github.com/fw876/helloworld
@@ -26,9 +24,9 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - IPv6 Full Support
 
-- Phicoomm K3 's LED Full Support
+- Phicoomm K3's LCD Screen Full Support
 
-- ADBYBY PLUS
+- ADbyby Plus
 
 - HelloWorld
 
@@ -42,12 +40,11 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - Syncdial
 
-- Mwan3
+- MWan3
 
 - Network Turbo ACC(base Qualcomm SFE)
 
 - Others
-- 
 
 ## Tanks | 致谢
 
