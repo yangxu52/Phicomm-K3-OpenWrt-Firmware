@@ -14,26 +14,18 @@
 #limitations under the License.
 #
 
-name: K3 firmware compile
+name: Build OpenWrt
 
 on:
   repository_dispatch:
-  workflow_dispatch:
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: false
-        default: 'false'
-#  schedule:
-#    - cron: 0 8 * * 5
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: PhicommK3/.config
-  INIT_SH: PhicommK3/init.sh
-  LAST_SH: PhicommK3/last.sh
+  CONFIG_FILE: .config
+  INITIALIZE_SH: PhicommK3/initialize.sh
+  FINALLIZE_SH: PhicommK3/finallize.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
@@ -62,7 +54,7 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
-    - name: 克隆源代码
+    - name: 拉取源代码[LEDE]
       working-directory: /workdir
       run: |
         df -hT $PWD
@@ -72,32 +64,25 @@ jobs:
     - name: 加载自定义feeds文件
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $INIT_SH
+        chmod +x $INITIALIZE_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$INIT_SH
+        $GITHUB_WORKSPACE/$INITIALIZE_SH
 
-    - name: 更新feeds
+    - name: 更新feeds中描述内容
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: 安装feeds
+    - name: 安装feeds中描述内容
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 加载自定义配置文件
+    - name: 加载自定义编译配置文件
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $LAST_SH
+        chmod +x $FINALLIZE_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$LAST_SH
+        $GITHUB_WORKSPACE/$FINALLIZE_SH
 
-    - name: SSH远程连接到Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-
-    - name: 下载make依赖包
+    - name: 下载编译所需依赖文件
       id: package
       run: |
         cd openwrt
@@ -121,7 +106,7 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
-    - name: 上传二进制目录
+    - name: 上传bin目录
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
@@ -137,7 +122,7 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
 
-    - name: 上传固件
+    - name: 上传固件目录
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
@@ -153,7 +138,7 @@ jobs:
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
         echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
 
-    - name: 上传固件到微快传
+    - name: 上传固件到WeTransfer
       id: wetransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
       run: |
@@ -162,17 +147,17 @@ jobs:
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
 
-    - name: 生成Release标记
+    - name: 生成Release标识
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::K3-$(date +"%Y.%m.%d-%H%M")"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
 
-    - name: 上传固件到Release
+    - name: 上传固件发布到Release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
@@ -182,13 +167,13 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
-    - name: 删除生成的旧固件
-      uses: c-hive/gha-remove-artifacts@v1.2.0
+    - name: 删除工作空间内容
+      uses: GitRML/delete-workflow-runs@main
       with:
-        age: '1 day'
-        skip-recent: 3
+        retain_days: 1
+        keep_minimum_runs: 3
 
-    - name: 删除旧的Releases
+    - name: 移出旧的Realeases
       uses: dev-drprasad/delete-older-releases@v0.1.0
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
