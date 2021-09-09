@@ -16,8 +16,12 @@
 #limitations under the License.
 #
 
-echo '添加passwall和bypass软件源'
+echo '添加passwall软件源'
 sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-#sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
 cat feeds.conf.default
-echo '====================Add feed source OK!===================='
+echo '=========Add feed source OK!========='
+
+echo '添加small-5的adblock-plus插件'
+rm -rf package/lean/luci-app-adblock-plus
+git clone -b 18.06 https://github.com/small-5/luci-app-adblock-plus.git package/lean/luci-app-adblock-plus
+echo '=========Add adblock-plus OK!========='
