@@ -29,7 +29,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
+  CONFIG_FILE: PhicommK3/.config
   INITIALIZE_SH: PhicommK3/initialize.sh
   FINALLIZE_SH: PhicommK3/finallize.sh
   UPLOAD_BIN_DIR: true
