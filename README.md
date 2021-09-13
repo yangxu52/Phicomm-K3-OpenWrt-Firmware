@@ -6,7 +6,7 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 ![GitHub Forks](https://img.shields.io/github/forks/yangxu52/K3-OpenWrt-Firmware-Action.svg?style=flat-square&label=Forks&logo=github)
 
 ## 注意！目前新版本固件工作不正常，定位和调试中！
-## WARNING! Current fireware is not working properly,wait for find and debug issue.
+## WARNING! Current fireware is not working properly,waiting for find and debug issue.
 
 ## Instruction | 介绍
 
