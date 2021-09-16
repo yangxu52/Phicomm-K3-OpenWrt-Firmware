@@ -17,7 +17,6 @@
 name: K3 firmware compile
 
 on:
-  repository_dispatch:
   workflow_dispatch:
 
 env:
