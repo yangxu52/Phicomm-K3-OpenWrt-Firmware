@@ -17,25 +17,19 @@
 name: K3 firmware compile
 
 on:
-  repository_dispatch:
   workflow_dispatch:
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: false
-        default: 'false'
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: feeds.conf.default
+  FEEDS_CONF: PhicommK3/feeds.conf.default
   CONFIG_FILE: PhicommK3/.config
-  INITIALIZE_SH: PhicommK3/initialize.sh
-  FINALLIZE_SH: PhicommK3/finallize.sh
-  UPLOAD_BIN_DIR: true
+  MOD_P1_SH: PhicommK3/part1.sh
+  MOD_P2_SH: PhicommK3/part2.sh
+  UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: true
-  UPLOAD_WETRANSFER: true
+  UPLOAD_COWTRANSFER: false
+  UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
@@ -70,9 +64,9 @@ jobs:
     - name: 加载自定义feeds文件
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $INITIALIZE_SH
+        chmod +x $MOD_P1_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$INITIALIZE_SH
+        $GITHUB_WORKSPACE/$MOD_P1_SH
 
     - name: 更新feeds中描述内容
       run: cd openwrt && ./scripts/feeds update -a
@@ -84,9 +78,9 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $FINALLIZE_SH
+        chmod +x $MOD_P2_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$FINALLIZE_SH
+        $GITHUB_WORKSPACE/$MOD_P2_SH
 
     - name: 下载编译所需依赖文件
       id: package
@@ -163,7 +157,7 @@ jobs:
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
 
-    - name: 上传固件发布到Release
+    - name: 发布到Release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
@@ -173,13 +167,13 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
-    - name: 删除工作空间内容
+    - name: 清理工作空间
       uses: GitRML/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 3
 
-    - name: 移出旧的Realeases
+    - name: 移除旧的Realeases
       uses: dev-drprasad/delete-older-releases@v0.1.0
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
