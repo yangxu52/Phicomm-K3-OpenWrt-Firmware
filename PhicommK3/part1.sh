@@ -46,10 +46,10 @@ sed -i 's/k3screenctrl/luci-app-k3screenctrl/g' target/linux/bcm53xx/image/Makef
 cat target/linux/bcm53xx/image/Makefile |grep DEVICE_PACKAGES
 echo '=========Remove other devices of bcm53xx!========='
 
-echo "[TEST]fix the issue of shortcut-fe-cm premature loading"
-sed -i '33i \ \ AUTOLOAD:=$(call AutoLoad,09,shortcut-fe shortcut-fe-ipv6)' package/lean/shortcut-fe/shortcut-fe/Makefile
-sed -i 's/START=72/START=99/g' package/lean/shortcut-fe/shortcut-fe/files/etc/init.d/shortcut-fe
-echo '[TEST]fix the issue of shortcut-fe-cm premature loading'
+#echo "[TEST]fix the issue of shortcut-fe-cm premature loading"
+#sed -i '33i \ \ AUTOLOAD:=$(call AutoLoad,09,shortcut-fe shortcut-fe-ipv6)' package/lean/shortcut-fe/shortcut-fe/Makefile
+#sed -i 's/START=72/START=99/g' package/lean/shortcut-fe/shortcut-fe/files/etc/init.d/shortcut-fe
+#echo '[TEST]fix the issue of shortcut-fe-cm premature loading'
 
 echo '替换K3的无线驱动为asus-dhd24'
 wget -nv https://github.com/Hill-98/phicommk3-firmware/raw/master/brcmfmac4366c-pcie.bin.asus-dhd24 -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
