@@ -10,16 +10,18 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 ### Source Code | 源码使用
 
-​	https://github.com/coolsnowwolf/lede
+- https://github.com/coolsnowwolf/lede
 
-​	https://github.com/fw876/helloworld
+- https://github.com/fw876/helloworld
 
-​	https://github.com/jerrykuku/luci-theme-argon
+- https://github.com/jerrykuku/luci-theme-argon
 
-​	https://github.com/lwz322/k3screenctrl_build
+- https://github.com/lwz322/k3screenctrl_build
 
 
 ### Including Applictions | 包含插件
+
+- #### Remove All USB Support(port can charge only)
 
 - IPv6 Full Support
 
@@ -27,7 +29,7 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - ADbyby Plus
 
-- HelloWorld
+- XXR PLUS (include Xray(V2ray) and Torjan only)
 
 - UnblockNeteaseMusic
 
@@ -41,14 +43,15 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - MWan3
 
-- Network Turbo ACC(base Qualcomm SFE)
+- Network Turbo ACC(base Qualcomm Short-FE)
 
 - Others
 
 ## Tanks | 致谢
 
 - [LEDE](https://github.com/coolsnowwolf)
-- [Lienol](https://github.com/xiaorouji)
+- [Lienol](https://github.com/Lienol)
 - [jerrykuku](https://github.com/jerrykuku)
 - [lwz322](https://github.com/lwz322)
 - [P3TERX](https://github.com/P3TERX)
+- And Every Source Contributor!
