@@ -27,13 +27,17 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - Phicoomm K3's LCD Screen Full Support
 
-- ADbyby Plus
+- Adbyby Plus
 
-- XXR PLUS (include Xray(V2ray) and Torjan only)
+- XXR Plus (include Xray(V2ray) and Torjan only)
+
+- ServerChan (Wechat Push)
 
 - UnblockNeteaseMusic
 
 - WiFi Schedule
+
+- Zerotier
 
 - UPNP
 
@@ -43,7 +47,7 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - MWan3
 
-- Network Turbo ACC(base Qualcomm Short-FE)
+- Network Turbo ACC(base new Qualcomm Short-FE)
 
 - Others
 
