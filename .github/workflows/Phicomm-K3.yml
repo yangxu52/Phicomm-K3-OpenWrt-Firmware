@@ -20,7 +20,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/yangxu52/lede
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: PhicommK3/feeds.conf.default
   CONFIG_FILE: PhicommK3/.config
