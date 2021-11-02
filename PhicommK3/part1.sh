@@ -48,7 +48,7 @@ echo '=========Remove other devices of bcm53xx!========='
 
 
 echo '移除主页跑分信息位置'
-sed -i "s/<%=luci.sys.exec(\"cat /etc/bench.log\") or \"\"%>//g" package/lean/autocore/files/arm/index.htm
+sed -i "s/<%=luci.sys.exec(\"cat \/etc\/bench.log\\") or \"\"%>//g" package/lean/autocore/files/arm/index.htm
 cat package/lean/autocore/files/arm/index.htm |grep <%:Model%>
 echo '=========Remove Benchmark Info In IndexPage!========='
 
