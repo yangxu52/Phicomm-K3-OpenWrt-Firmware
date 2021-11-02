@@ -46,6 +46,12 @@ sed -i 's/k3screenctrl/luci-app-k3screenctrl/g' target/linux/bcm53xx/image/Makef
 cat target/linux/bcm53xx/image/Makefile |grep DEVICE_PACKAGES
 echo '=========Remove other devices of bcm53xx!========='
 
+
+echo '移除主页跑分信息位置'
+sed -i "s/<%=luci.sys.exec(\"cat /etc/bench.log\") or \"\"%>//g" package/lean/autocore/files/arm/index.htm
+cat package/lean/autocore/files/arm/index.htm |grep <%:Model%>
+echo '=========Remove Benchmark Info In IndexPage!========='
+
 #echo "[TEST]fix the issue of shortcut-fe-cm premature loading"
 #sed -i '33i \ \ AUTOLOAD:=$(call AutoLoad,09,shortcut-fe shortcut-fe-ipv6)' package/lean/shortcut-fe/shortcut-fe/Makefile
 #sed -i 's/START=72/START=99/g' package/lean/shortcut-fe/shortcut-fe/files/etc/init.d/shortcut-fe
