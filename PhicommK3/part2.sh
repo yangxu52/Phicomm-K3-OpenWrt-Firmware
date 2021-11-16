@@ -32,9 +32,9 @@ sed -i "s/hostname='OpenWrt'/hostname='Phicomm-K3'/g" package/base-files/files/b
 cat package/base-files/files/bin/config_generate |grep hostname=
 echo '=========Alert hostname OK!========='
 
-# echo '移除主页跑分信息显示'
-# sed -i 's/ <%=luci.sys.exec("cat \/etc\/bench.log") or ""%>//g' package/lean/autocore/files/arm/index.htm
-# echo '=========Remove benchmark display in index OK!========='
+echo '移除主页跑分信息显示'
+sed -i 's/ <%=luci.sys.exec("cat \/etc\/bench.log") or ""%>//g' package/lean/autocore/files/arm/index.htm
+echo '=========Remove benchmark display in index OK!========='
 
 echo '移除主页日志打印'
 sed -i '/console.log(mainNodeName);/d' package/lean/luci-theme-argon/htdocs/luci-static/argon/js/script.js
