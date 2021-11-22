@@ -28,13 +28,13 @@ echo '=========Add argon-mod OK!========='
 
 echo '添加lwz322的K3屏幕插件'
 rm -rf package/lean/luci-app-k3screenctrl
-git clone https://github.com/lwz322/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
+git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
 ls -la package/lean/ |grep luci-app-k3screenctrl
 echo '=========Add k3screen plug OK!========='
 
 echo '替换lwz322的K3屏幕驱动插件'
 rm -rf package/lean/k3screenctrl
-git clone https://github.com/lwz322/k3screenctrl_build.git package/lean/k3screenctrl/
+git clone https://github.com/yangxu52/k3screenctrl_build.git package/lean/k3screenctrl/
 #sed -i 's/@TARGET_bcm53xx_DEVICE_phicomm-k3 +@KERNEL_DEVMEM //g' package/lean/k3screenctrl/Makefile
 cat package/lean/k3screenctrl/Makefile |grep DEPENDS
 echo '=========Replace k3screen drive plug OK!========='
