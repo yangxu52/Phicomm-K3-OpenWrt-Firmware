@@ -40,11 +40,12 @@ echo '=========Alert hostname OK!========='
 echo '添加jerrykuku的argon-mod主题'
 rm -rf feeds/luci/themes/luci-theme-argon/
 git clone https://github.com/jerrykuku/luci-theme-argon feeds/luci/themes/luci-theme-argon/
-echo '=========Add argon-mod OK!========='
+echo '=========Add argon-mod OK!
+========='
 
 echo '替换lwz322的K3屏幕驱动插件'
 rm -rf feeds/other/lean/k3screenctrl/
-git clone https://github.com/yangxu52/k3screenctrl_build.git feeds/other/lean/k3screenctrl/
+git clone https://github.com/lwz322/k3screenctrl_build.git feeds/other/lean/k3screenctrl/
 #sed -i 's/@TARGET_bcm53xx_DEVICE_phicomm-k3 +@KERNEL_DEVMEM //g' package/lean/k3screenctrl/Makefile
 cat feeds/other/lean/k3screenctrl/Makefile |grep DEPENDS
 echo '=========Replace k3screen drive plug OK!========='
