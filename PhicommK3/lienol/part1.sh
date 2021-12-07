@@ -23,7 +23,7 @@ echo '=========Add feed source OK!========='
 
 echo '添加lwz322的K3屏幕插件'
 rm -rf package/luci-app-k3screenctrl
-git clone https://github.com/yangxu52/luci-app-k3screenctrl.git package/luci-app-k3screenctrl
+git clone https://github.com/lwz322/luci-app-k3screenctrl.git package/luci-app-k3screenctrl
 echo '=========Add k3screen plug OK!========='
 
 echo '移除bcm53xx中的其他机型'
