@@ -40,19 +40,21 @@ rm -rf package/lean/k3screenctrl
 git clone https://github.com/lwz322/k3screenctrl_build.git package/lean/k3screenctrl/
 echo '=========Replace k3screen drive plug OK!========='
 
+echo '修改5.4分支为5.4.150'
+sed -i '/^LINUX_VERSION-5.4/c LINUX_VERSION-5.4 = .150' include/kernel-version.mk
+sed -i '/^LINUX_KERNEL_HASH-5.4/c LINUX_KERNEL_HASH-5.4.150 = f424a9bbb05007f04c17f96a2e4f041a8001554a9060d2c291606e8a97c62aa2' include/kernel-version.mk
+wget -nv https://github.com/yangxu52/OP-old-kernel-target/raw/main/target-5.4.150.tar.gz ./target-5.4.150.tar.gz
+rm -rf ./target/
+tar -zxf ./target-5.4.150.tar.gz
+rm -rf ./target-5.4.150.tar.gz
+echo '=========Alert kernel to 5.4.150 OK!========='
+
 echo '移除bcm53xx中的其他机型'
 sed -i '421,453d' target/linux/bcm53xx/image/Makefile
 sed -i '140,412d' target/linux/bcm53xx/image/Makefile
 sed -i 's/$(USB3_PACKAGES) k3screenctrl/luci-app-k3screenctrl/g' target/linux/bcm53xx/image/Makefile
 # sed -n '140,146p' target/linux/bcm53xx/image/Makefile
 echo '=========Remove other devices of bcm53xx OK!========='
-
-echo '修改5.4分支为5.4.150'
-sed -i '/^LINUX_VERSION-5.4/c LINUX_VERSION-5.4 = .150' include/kernel-version.mk
-sed -i '/^LINUX_KERNEL_HASH-5.4/c LINUX_KERNEL_HASH-5.4.150 = f424a9bbb05007f04c17f96a2e4f041a8001554a9060d2c291606e8a97c62aa2' include/kernel-version.mk
-cat include/kernel-version.mk |grep LINUX_VERSION-5.4
-cat include/kernel-version.mk |grep LINUX_KERNEL_HASH-5.4
-echo '=========Alert kernel to 5.4.150 OK!========='
 
 echo '替换K3的无线驱动为asus-dhd24'
 wget -nv https://github.com/Hill-98/phicommk3-firmware/raw/master/brcmfmac4366c-pcie.bin.asus-dhd24 -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
