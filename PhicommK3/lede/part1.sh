@@ -43,7 +43,7 @@ echo '=========Replace k3screen drive plug OK!========='
 echo '修改5.4分支为5.4.150'
 sed -i '/^LINUX_VERSION-5.4/c LINUX_VERSION-5.4 = .150' include/kernel-version.mk
 sed -i '/^LINUX_KERNEL_HASH-5.4/c LINUX_KERNEL_HASH-5.4.150 = f424a9bbb05007f04c17f96a2e4f041a8001554a9060d2c291606e8a97c62aa2' include/kernel-version.mk
-wget -nv https://github.com/yangxu52/OP-old-kernel-target/raw/main/target-5.4.150.tar.gz ./target-5.4.150.tar.gz
+wget -nv https://github.com/yangxu52/OP-old-kernel-target/raw/main/target-5.4.150.tar.gz
 rm -rf ./target/
 tar -zxf ./target-5.4.150.tar.gz
 rm -rf ./target-5.4.150.tar.gz
