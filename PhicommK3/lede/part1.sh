@@ -30,14 +30,24 @@ rm -rf package/lean/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
 echo '=========Add argon-mod OK!========='
 
-echo '添加lwz322的K3屏幕插件'
+# echo '添加lwz322的K3屏幕插件'
+# rm -rf package/lean/luci-app-k3screenctrl
+# git clone https://github.com/lwz322/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
+# echo '=========Add k3screen plug OK!========='
+
+# echo '替换lwz322的K3屏幕驱动插件'
+# rm -rf package/lean/k3screenctrl
+# git clone https://github.com/lwz322/k3screenctrl_build.git package/lean/k3screenctrl/
+# echo '=========Replace k3screen drive plug OK!========='
+
+echo '添加Hill-98的K3屏幕插件'
 rm -rf package/lean/luci-app-k3screenctrl
-git clone https://github.com/lwz322/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
+git clone https://github.com/Hill-98/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
 echo '=========Add k3screen plug OK!========='
 
-echo '替换lwz322的K3屏幕驱动插件'
+echo '替换Hill-98的K3屏幕驱动插件'
 rm -rf package/lean/k3screenctrl
-git clone https://github.com/lwz322/k3screenctrl_build.git package/lean/k3screenctrl/
+git clone https://github.com/Hill-98/openwrt-k3screenctrl package/lean/k3screenctrl/
 echo '=========Replace k3screen drive plug OK!========='
 
 # echo '修改5.4分支为5.4.150'
