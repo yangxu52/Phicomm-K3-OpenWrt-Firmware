@@ -54,7 +54,7 @@ sed -i '/^LINUX_VERSION-5.4/c LINUX_VERSION-5.4 = .156' include/kernel-version.m
 sed -i '/^LINUX_KERNEL_HASH-5.4/c LINUX_KERNEL_HASH-5.4.156 = 06fe73e4623fcf1b3c0d0e1983d8286a2ff5b8fffbcb2163f4c01696a1c377fe' include/kernel-version.mk
 wget -nv https://github.com/yangxu52/OP-old-kernel-target/raw/main/target-5.4.156.tar.gz
 rm -rf ./target/
-tar -zxf ./target-5.4.156tar.gz
+tar -zxf ./target-5.4.156.tar.gz
 rm -rf ./target-5.4.156.tar.gz
 echo '=========Alert kernel to 5.4.156 OK!========='
 
