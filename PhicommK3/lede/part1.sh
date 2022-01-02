@@ -30,24 +30,14 @@ rm -rf package/lean/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
 echo '=========Add argon-mod OK!========='
 
-# echo '添加lwz322的K3屏幕插件'
-# rm -rf package/lean/luci-app-k3screenctrl
-# git clone https://github.com/lwz322/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
-# echo '=========Add k3screen plug OK!========='
-
-# echo '替换lwz322的K3屏幕驱动插件'
-# rm -rf package/lean/k3screenctrl
-# git clone https://github.com/lwz322/k3screenctrl_build.git package/lean/k3screenctrl/
-# echo '=========Replace k3screen drive plug OK!========='
-
-echo '添加Hill-98的K3屏幕插件'
+echo '添加lwz322的K3屏幕插件'
 rm -rf package/lean/luci-app-k3screenctrl
-git clone https://github.com/Hill-98/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
+git clone https://github.com/lwz322/luci-app-k3screenctrl.git package/lean/luci-app-k3screenctrl
 echo '=========Add k3screen plug OK!========='
 
-echo '替换Hill-98的K3屏幕驱动插件'
+echo '替换lwz322的K3屏幕驱动插件'
 rm -rf package/lean/k3screenctrl
-git clone https://github.com/Hill-98/openwrt-k3screenctrl package/lean/k3screenctrl/
+git clone https://github.com/lwz322/k3screenctrl_build.git package/lean/k3screenctrl/
 echo '=========Replace k3screen drive plug OK!========='
 
 # echo '修改5.4分支为5.4.150'
@@ -58,15 +48,6 @@ echo '=========Replace k3screen drive plug OK!========='
 # tar -zxf ./target-5.4.150.tar.gz
 # rm -rf ./target-5.4.150.tar.gz
 # echo '=========Alert kernel to 5.4.150 OK!========='
-
-echo '修改5.4分支为5.4.156'
-sed -i '/^LINUX_VERSION-5.4/c LINUX_VERSION-5.4 = .156' include/kernel-version.mk
-sed -i '/^LINUX_KERNEL_HASH-5.4/c LINUX_KERNEL_HASH-5.4.156 = 06fe73e4623fcf1b3c0d0e1983d8286a2ff5b8fffbcb2163f4c01696a1c377fe' include/kernel-version.mk
-wget -nv https://github.com/yangxu52/OP-old-kernel-target/raw/main/target-5.4.156.tar.gz
-rm -rf ./target/
-tar -zxf ./target-5.4.156.tar.gz
-rm -rf ./target-5.4.156.tar.gz
-echo '=========Alert kernel to 5.4.156 OK!========='
 
 echo '移除bcm53xx中的其他机型'
 sed -i '421,453d' target/linux/bcm53xx/image/Makefile
