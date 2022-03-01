@@ -29,7 +29,7 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - Adbyby Plus
 
-~~- Passwall ~~(include Xray(V2ray) and Torjan only)
+- ~~Passwall~~ (include Xray(V2ray) and Torjan only)
 
 - ServerChan (Wechat Push)
 
