@@ -40,14 +40,6 @@ rm -rf package/lean/k3screenctrl
 git clone https://github.com/yangxu52/k3screenctrl_build.git package/lean/k3screenctrl/
 echo '=========Replace k3screen drive plug OK!========='
 
-echo '修改5.4分支为5.4.latest'
-sed -i '/^LINUX_VERSION-5.4/c LINUX_VERSION-5.4 = .179' include/kernel-5.4
-sed -i '/^LINUX_KERNEL_HASH-5.4/c LINUX_KERNEL_HASH-5.4.179 = ac901bdffb1488d6c730ca7ab42322163dd331b240e2f06ad83d199e251a4840' include/kernel-5.4
-# wget -nv https://github.com/yangxu52/OP-old-kernel-target/raw/main/target-5.4.150.tar.gz
-# rm -rf ./target/
-# tar -zxf ./target-5.4.150.tar.gz
-# rm -rf ./target-5.4.150.tar.gz
-echo '=========Alert kernel to 5.4.latest OK!========='
 
 echo '移除bcm53xx中的其他机型'
 sed -i '421,453d' target/linux/bcm53xx/image/Makefile
