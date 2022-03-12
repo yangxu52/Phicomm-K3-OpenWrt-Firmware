@@ -23,6 +23,8 @@
 
 echo '添加Passwall软件源'
 sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+rm -rf package/lean/luci-app-passwall 
+git clone -b luci https://github.com/xiaorouji/openwrt-passwall package/lean/luci-app-passwall 
 echo '=========Add feed source OK!========='
 
 echo '添加jerrykuku的argon-mod主题'
