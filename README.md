@@ -12,16 +12,18 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - https://github.com/coolsnowwolf/lede
 
-- https://github.com/fw876/helloworld
+- https://github.com/xiaorouji/openwrt-passwall
 
 - https://github.com/jerrykuku/luci-theme-argon
 
 - https://github.com/lwz322/k3screenctrl_build
 
+- ······
+
 
 ### Including Applictions | 包含插件
 
-- #### Remove All USB Support(port can charge only)
+- ! Remove All USB Support(USB interface can charge only)
 
 - IPv6 Full Support
 
@@ -29,9 +31,7 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - Adbyby Plus
 
-- Aliyundrive-webdav (golang)
-
-- ~~Passwall~~ (include Xray(V2ray) and Torjan only)
+- ~~Passwall~~ (include xray-core only，support vmess,vless,trojan protocol)
 
 - ServerChan (Wechat Push)
 
@@ -49,7 +49,7 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - MWan3
 
-- Network Turbo ACC(base new Qualcomm Short-FE)
+- Network Turbo ACC(base on new Qualcomm Short-FE)
 
 - Others
 
