@@ -14,6 +14,10 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 - https://github.com/xiaorouji/openwrt-passwall
 
+- https://github.com/kiddin9/openwrt-bypass
+
+- https://github.com/kiddin9/luci-app-dnsfilter
+
 - https://github.com/jerrykuku/luci-theme-argon
 
 - https://github.com/lwz322/k3screenctrl_build
@@ -23,15 +27,15 @@ Phicomm K2P/K3 OpenWrt firmware Compile by Github Actions
 
 ### Including Applictions | 包含插件
 
-- ! Remove All USB Support(USB interface can charge only)
+- Remove All USB Support(USB interface can charge only) ! important !
 
 - IPv6 Full Support
 
 - Phicoomm K3's LCD Screen Full Support
 
-- Adbyby Plus
+- DNSFilter (auto configuration no-ad)
 
-- ~~Passwall~~ (include xray-core only，support vmess,vless,trojan protocol)
+- ~~Bypass~~ (include xray-core only，support vmess,vless,trojan protocol)
 
 - ServerChan (Wechat Push)
 
