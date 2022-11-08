@@ -63,6 +63,7 @@ jobs:
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true'
+        mixkey: 'bcm53'
         prefix: ${{ github.workspace }}/openwrt
 
     - name: 加载自定义feeds文件
