@@ -16,6 +16,11 @@
 #limitations under the License.
 #
 
+# Alter default kernel version
+sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g' target/linux/bcm53xx/Makefile
+cat target/linux/bcm53xx/Makefile |grep KERNEL_PATCHVER
+echo '=========Alert Kernel OK!========='
+
 # Alter default router IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
