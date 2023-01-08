@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#Copyright 2022 yangxu52<https://github.com/yangxu52>
+#Copyright 2021-2023 yangxu52<https://github.com/yangxu52>
 #
 #Licensed under the Apache License, Version 2.0 (the "License");
 #you may not use this file except in compliance with the License.
