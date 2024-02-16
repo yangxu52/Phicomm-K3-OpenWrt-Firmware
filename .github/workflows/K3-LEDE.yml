@@ -22,10 +22,10 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: PhicommK3/lede/feeds.conf.default
-  CONFIG_FILE: PhicommK3/lede/.config
-  MOD_P1_SH: PhicommK3/lede/part1.sh
-  MOD_P2_SH: PhicommK3/lede/part2.sh
+  FEEDS_CONF: lede/feeds.conf.default
+  CONFIG_FILE: lede/.config
+  MOD_PART1_SH: lede/part1.sh
+  MOD_PART2_SH: lede/part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -56,7 +56,7 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 尝试获取缓存
@@ -69,9 +69,9 @@ jobs:
     - name: 加载自定义feeds文件
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $MOD_P1_SH
+        chmod +x $MOD_PART1_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$MOD_P1_SH
+        $GITHUB_WORKSPACE/$MOD_PART1_SH
 
     - name: 更新feeds中描述内容
       run: cd openwrt && ./scripts/feeds update -a
@@ -83,9 +83,9 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $MOD_P2_SH
+        chmod +x $MOD_PART2_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$MOD_P2_SH
+        $GITHUB_WORKSPACE/$MOD_PART2_SH
 
     - name: 下载编译所需依赖文件
       id: package
