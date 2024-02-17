@@ -1,8 +1,8 @@
-# **K3-OpenWrt-Firmware-Action** [Please Star⚝ ↗]
-Phicomm K3 OpenWrt Firmware CI by Github Actions  
-[![LICENSE](https://img.shields.io/badge/license-apache--2.0-green.svg?style=flat-square&label=LICENSE)](https://github.com/yangxu52/K3-OpenWrt-Firmware-Action/blob/main/LICENSE)&nbsp;
-![GitHub Stars](https://img.shields.io/github/stars/yangxu52/K3-OpenWrt-Firmware-Action.svg?style=flat-square&label=Stars&logo=github)&nbsp;
-![GitHub Forks](https://img.shields.io/github/forks/yangxu52/K3-OpenWrt-Firmware-Action.svg?style=flat-square&label=Forks&logo=github)
+# **Phicomm-K3-OpenWrt-Firmware** [Please Star⚝ ↗]
+Phicomm K3 OpenWrt Firmware, compile by Github Actions  
+[![LICENSE](https://img.shields.io/badge/license-apache--2.0-green.svg?style=flat-square&label=LICENSE)](https://github.com/yangxu52/Phicomm-K3-OpenWrt-Firmware/blob/main/LICENSE)&nbsp;
+![GitHub Stars](https://img.shields.io/github/stars/yangxu52/Phicomm-K3-OpenWrt-Firmware.svg?style=flat-square&label=Stars&logo=github)&nbsp;
+![GitHub Forks](https://img.shields.io/github/forks/yangxu52/Phicomm-K3-OpenWrt-Firmware.svg?style=flat-square&label=Forks&logo=github)
 &emsp;
 ## **1. Instruction | 介绍**  
 ### **1.1 Source Code | 源码使用**  
